@@ -1,4 +1,5 @@
 # GUI.py
+import sys
 import math
 import time
 import pygame
@@ -101,28 +102,31 @@ def generateBoardFromSolution(size, solution, quant):
     return board
 
 
-def redraw_window(surface, board):
+def draw_window(surface, board):
     surface.fill((255,255,255))
     # Draw grid and board
     board.draw(surface)
-    
+
 
 def main():
-    size = 10
-    surface = pygame.display.set_mode((540,540))
-    pygame.display.set_caption("Mosaic")
-    sol = generateRandomSolution(size, 0.5)
-    board = generateBoardFromSolution(size, sol, 35)
-    grid = Grid(size, board, 540, 540)
-    run = True
-    
-    while run:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+    size = int(sys.argv[1])
+    quantity = int(sys.argv[2])
+    prob = float(sys.argv[3])
+    num_inst = int(sys.argv[4])
+    fname = sys.argv[5]
 
-        redraw_window(surface, grid)
-        pygame.display.update()
+    for i in range(num_inst):
+        surface = pygame.display.set_mode((540,540))
+        sol = generateRandomSolution(size, prob)
+        board = generateBoardFromSolution(size, sol, quantity)
+        grid = Grid(size, board, 540, 540)
+        
+        draw_window(surface, grid)
+        pygame.image.save(surface, fname+"instance_"+str(i)+".png")
+        
+        with open(fname+"instance_"+str(i)+".txt", 'w') as file:
+            for row in sol:
+                file.write(' '.join([str(i) for i in row]) + '\n')
 
 main()
 pygame.quit()
