@@ -18,6 +18,9 @@ class Solver:
         self.clues = copy.deepcopy(board)
         self.original_board = board
         self.board_size = size
+        self.found_solutions = 0
+
+        self.found_solution_hash = 0
 
         x = 0
         y = 0
@@ -250,16 +253,37 @@ class Solver:
 
         # Check if clue exists
         if clue[0] == -1 and clue[1] == -1 :
+            # No Further Clues found => Probably a solution
+
             # Validate
             valid = self.valid_solution();
 
             if valid:
-                print("Done")
-                self.print_final_solution()
+                # Create quick stupid hash
+                _hash = 0
+                for row in self.constructed_solution:
+                    for col in row:
+                        _hash = hash(_hash + col)
+
+                if self.found_solution_hash == 0:
+                    print("Found new Solution")
+                    self.found_solution_hash = _hash
+                    self.print_final_solution()
+
+                    self.found_solutions += 1
+                #elif self.found_solution_hash == _hash:
+                    #print("Found duplicate Solution")
+                else:
+                    print("Found a second Solution")
+                    self.print_final_solution()
+                    self.found_solutions += 1
+                    return -1
+
+            # Reverse Occupation
+            self.set_white(x, y)
+            if valid:
                 return 1
             else:
-                # Reverse Occupation
-                self.set_white(x, y)
                 return 0
 
         # Remember Child Solutions
@@ -271,7 +295,14 @@ class Solver:
             _x = clue[0] + pos[0]
             _y = clue[1] + pos[1]
 
-            child_solutions += self.solve_step(_x,_y)
+            value = self.solve_step(_x,_y)
+
+            if value == -1:
+                # A second solution has been found!
+                return -1
+            else:
+                child_solutions += value
+
 
         # Reverse Occupation
         self.set_white(x, y)
@@ -294,4 +325,4 @@ class Solver:
             child_solutions += self.solve_step(_x,_y)
 
 
-        return child_solutions
+        return self.found_solutions
