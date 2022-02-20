@@ -283,12 +283,12 @@ class Solver:
                 if self.found_solution_hash == 0:
                     #print("Found new Solution")
                     self.found_solution_hash = _hash
-                    self.print_final_solution()
+                    #self.print_final_solution()
 
                     self.found_solutions += 1
                 elif self.found_solution_hash != _hash:
                     #print("Found a second Solution")
-                    self.print_final_solution()
+                    #self.print_final_solution()
                     self.found_solutions += 1
                     return -1
 
@@ -508,7 +508,7 @@ class Solver:
         # Validate
         #print(self.valid_solution())
 
-        self.print_final_solution()
+        #self.print_final_solution()
 
         x = 0
 
@@ -558,7 +558,7 @@ class Solver:
         # We want to encourage taking the lowest number (higher numbers are easy)
         take_higher_number = random.random() < 0.2
 
-        print("Restricted Amount: " + str(restricted) + " Black Amount: " + str(blacks) + " We want to pick higher: " + str(take_higher_number))
+        #print("Restricted Amount: " + str(restricted) + " Black Amount: " + str(blacks) + " We want to pick higher: " + str(take_higher_number))
         if take_higher_number:
             # we do the opposite of what we would usually do
             do_restriction = not do_restriction
@@ -621,10 +621,10 @@ class Solver:
                 start_clue = other_clue
                 start_value = other_value
 
-            print(str(other_clue) + " This Value is : " + str(other_value))
+            #print(str(other_clue) + " This Value is : " + str(other_value))
 
         if start_value != -10:
-            print("Picking clue at " + str(start_clue[0]) + " " + str(start_clue[1]) + " with value " + str(start_value))
+            #print("Picking clue at " + str(start_clue[0]) + " " + str(start_clue[1]) + " with value " + str(start_value))
             self.pick_clue_at(start_clue[0], start_clue[1])
             return True
 
@@ -645,16 +645,46 @@ class Solver:
         while_breaker = 5000
         while while_breaker > 0 and clues_left >= 0:
             while_breaker -= 1
-
+            # Here random Clues are added to the board
             if self.choose_good_clue_position(clues_left / amount_of_clues):
                 clues_left -= 1
 
-            print("Step " + str(5000- while_breaker))
+        # Employ the 9x9 Empty area rule
+        # => There ought not to be any 9x9 area in our puzzle that isn't covered by any clue
 
-            print("Current Solution:")
-            self.print_final_solution()
-            print("Current Clues:")
-            self.print_final_clue()
+        # Fill matrix with -1 where ever a clue is in a 9x9 area
+        self.constructed_solution = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
+        x = 0
+
+        for row in self.clues:
+            y = 0
+            for col in row:
+                if col <= 0:
+                    self.restrict_around(x,y)
+                y += 1
+            x += 1
+        #self.print_board(self.constructed_solution)
+
+        x = 0
+        # Where ever there is a 0, we need put a clue around
+        for row in self.constructed_solution:
+            y = 0
+            for col in row:
+                if col == 0:
+                    # Randomize x and y position for niceness
+                    # The value is clamped as not to reach out of bounds
+                    rand_x = max(0, min(random.randint(-1, 1) + x, self.board_size -1))
+                    rand_y = max(0, min(random.randint(-1, 1) + y, self.board_size -1))
+
+                    # Pick Clue here
+                    self.pick_clue_at(rand_x, rand_y)
+
+                    # Restrict Further
+                    self.restrict_around(rand_x,rand_y)
+
+                y += 1
+            x += 1
+
 
         x = 0
         # Cleanup Clue Board

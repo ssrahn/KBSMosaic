@@ -120,9 +120,9 @@ def draw_window(surface, board):
 def main():
 
     size = 10
-    quantity = 35
+    quantity = 15
     prob = 0.5
-    num_inst = 1
+    num_inst = 5
     fname = "instances/"
 
     # size = int(sys.argv[1])
@@ -141,7 +141,7 @@ def main():
         #sol = generateRandomSolution(size, prob)
         # List of Numbers indicating Neighbors
         #board = generateBoardFromSolution(size, sol, quantity)
-        board = solver.create_board(quantity, 6)
+        board = solver.create_board(quantity, 6+ i)
 
         grid = Grid(size, board, 540, 540)
 
