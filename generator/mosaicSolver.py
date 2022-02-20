@@ -1,4 +1,5 @@
-
+import math
+import random
 import copy
 
 
@@ -12,11 +13,11 @@ def number_to_9x9(number):
     return ret
 
 class Solver:
-    def __init__(self, size, board):
+    def __init__(self, size):
         # 1 for Black Box, 0 for Free Box, Negative for Restricted Box (the more negative it is, the more nearby Numbers restrict this block)
         self.constructed_solution = [[0 for j in range(size)] for i in range(size)]
-        self.clues = copy.deepcopy(board)
-        self.original_board = board
+        self.clues =  [[0 for j in range(size)] for i in range(size)]
+        self.original_board = [[0 for j in range(size)] for i in range(size)]
         self.board_size = size
         self.found_solutions = 0
 
@@ -43,6 +44,16 @@ class Solver:
             s = ""
             for col in row:
                 s += str(col) + "   "
+            print(s)
+
+    def print_final_clue(self):
+        for row in self.clues:
+            s = ""
+            for col in row:
+                value = col
+                if value < 0:
+                    value = 0
+                s += str(value) + "  "
             print(s)
 
     def print_final_solution(self):
@@ -113,6 +124,7 @@ class Solver:
 
     def is_restricted_at(self, x,y):
         return self.constructed_solution[x][y] == -1
+
 
     def restrict_at(self,x,y):
         if self.is_out_of_bounds(x,y):
@@ -239,7 +251,7 @@ class Solver:
 
 
 
-    def solve_step(self, x,y):
+    def solve_step(self, x,y, depth):
 
         # Occupy Block at x,y
         valid = self.set_black(x,y)
@@ -248,6 +260,7 @@ class Solver:
         if not valid:
             return 0
 
+        #print("Set " + str(x) + " " + str(y) + " depth: " + str(depth))
         # Get new Unsatisfied Clue
         clue = self.get_smallest_unsatisfied_number()
 
@@ -256,25 +269,25 @@ class Solver:
             # No Further Clues found => Probably a solution
 
             # Validate
-            valid = self.valid_solution();
+            valid = self.valid_solution()
 
             if valid:
                 # Create quick stupid hash
                 _hash = 0
+                c = 0
                 for row in self.constructed_solution:
                     for col in row:
-                        _hash = hash(_hash + col)
-
+                        c += 1
+                        if col >= 0:
+                            _hash = (_hash + col * 10 * c * c)
                 if self.found_solution_hash == 0:
-                    print("Found new Solution")
+                    #print("Found new Solution")
                     self.found_solution_hash = _hash
                     self.print_final_solution()
 
                     self.found_solutions += 1
-                #elif self.found_solution_hash == _hash:
-                    #print("Found duplicate Solution")
-                else:
-                    print("Found a second Solution")
+                elif self.found_solution_hash != _hash:
+                    #print("Found a second Solution")
                     self.print_final_solution()
                     self.found_solutions += 1
                     return -1
@@ -295,7 +308,7 @@ class Solver:
             _x = clue[0] + pos[0]
             _y = clue[1] + pos[1]
 
-            value = self.solve_step(_x,_y)
+            value = self.solve_step(_x,_y, depth + 1)
 
             if value == -1:
                 # A second solution has been found!
@@ -310,19 +323,351 @@ class Solver:
         return child_solutions
 
 
-    def get_solutions(self):
-        clue = self.get_smallest_unsatisfied_number()
 
+
+
+
+    def restrict_around(self,x,y):
+        #print("Restrict")
+        for i in range(0, 9):
+            pos = number_to_9x9(i)
+            _x = x + pos[0]
+            _y = y + pos[1]
+
+            value = self.get_solution_at(_x,_y)
+            if value == 0:
+                self.constructed_solution[_x][_y] = -1
+
+    def fill_around(self,x,y):
+       #print("Fill")
+        for i in range(0, 9):
+            pos = number_to_9x9(i)
+            _x = x + pos[0]
+            _y = y + pos[1]
+
+            value = self.get_solution_at(_x,_y)
+            if value == 0:
+                self.constructed_solution[_x][_y] = 1
+
+
+    def number_of_black_squares_at(self, x,y):
+        # Add Up all Black Squares in a 3x3 Square around Restriction Number
+        amount_of_squares = 0
+        for i in range(0, 9):
+            pos = number_to_9x9(i)
+            _x = x + pos[0]
+            _y = y + pos[1]
+            if self.get_solution_at(_x, _y) == 1:
+                amount_of_squares += 1
+        return amount_of_squares
+
+    def number_of_white_squares_at(self, x,y):
+        # Add Up all White Squares in a 3x3 Square around Restriction Number
+        amount_of_squares = 0
+        for i in range(0, 9):
+            pos = number_to_9x9(i)
+            _x = x + pos[0]
+            _y = y + pos[1]
+            if self.get_solution_at(_x, _y) == 0:
+                amount_of_squares += 1
+        return amount_of_squares
+
+    def number_of_restricted_squares_at(self, x,y):
+        # Add Up all Restricted Squares in a 3x3 Square around Restriction Number
+        amount_of_squares = 0
+        for i in range(0, 9):
+            pos = number_to_9x9(i)
+            _x = x + pos[0]
+            _y = y + pos[1]
+            if self.get_solution_at(_x, _y) == -1:
+                amount_of_squares += 1
+        return amount_of_squares
+
+    def solve_restrict(self):
+        made_change = False
+        x = 0
+        # Restricts possible free box fields, if a nearby number is already satisfied
+        for row in self.original_board:
+            y = 0
+            for col in row:
+                num_squares = self.number_of_black_squares_at(x,y)
+
+                if num_squares == col:
+                    # Restrict ALL nearby solution fields
+                    for i in range(0, 9):
+                        pos = number_to_9x9(i)
+                        _x = x + pos[0]
+                        _y = y + pos[1]
+
+                        value = self.get_solution_at(_x, _y)
+                        if value == 0:
+                            made_change = True
+                            self.constructed_solution[_x][_y] = -1
+
+                y += 1
+            x += 1
+        return made_change
+
+    def solve_fill(self):
+        made_change = False
+        x = 0
+        # Whenever a number demands x amount of fields to be filled and it has exactly that amount of possible free room, we fill the entire room with black squares
+        for row in self.original_board:
+            y = 0
+            for col in row:
+                whites = self.number_of_white_squares_at(x,y)
+                blacks = self.number_of_black_squares_at(x,y)
+
+                if col - blacks == whites and col - blacks != 0:
+                    # Fill ALL nearby solution fields
+                    for i in range(0, 9):
+                        pos = number_to_9x9(i)
+                        _x = x + pos[0]
+                        _y = y + pos[1]
+
+                        value = self.get_solution_at(_x, _y)
+                        if value == 0:
+                            made_change = True
+                            self.constructed_solution[_x][_y] = 1
+
+                y += 1
+            x += 1
+        return made_change
+
+    def iterate_solution(self):
+        iterate = True
+
+        while iterate:
+            iterate = False
+            change = self.solve_restrict()
+            change = change or self.solve_fill()
+            iterate = change
+
+        return True
+
+    def throwaway_recursion(self):
+        change = False
+        while change:
+            if not change and not self.valid_solution():
+                # Get new Unsatisfied Clue
+                clue = self.get_smallest_unsatisfied_number()
+
+                copys = copy.deepcopy(self.constructed_solution)
+
+                # Recursively add new black blocks
+                for i in range(0, 9):
+                    pos = number_to_9x9(i)
+                    _x = clue[0] + pos[0]
+                    _y = clue[1] + pos[1]
+
+                    made_change = False
+                    # Occupy Block at x,y
+                    if self.get_solution_at(_x, _y) == 0:
+                        self.constructed_solution[_x][_y] = 1
+
+                        # Restrict ALL nearby solution fields
+                        for i in range(0, 9):
+                            res_pos = number_to_9x9(i)
+                            res_x = _x + res_pos[0]
+                            res_y = _y + res_pos[1]
+
+                            value = self.get_solution_at(res_x, res_y)
+                            if value != 1 and value != -10:
+                                made_change = True
+                                self.constructed_solution[res_x][res_y] = -1
+
+                        value = self.iterate_solution()
+
+                        if value == True:
+                            # A second solution has been found!
+                            return True
+
+                    self.constructed_solution = copys
+
+            elif not change and self.valid_solution():
+                break;
+
+    def get_solutions(self, board):
+
+        #clue = self.get_smallest_unsatisfied_number()
+        self.clue = copy.deepcopy(board)
+        self.original_board = board
         # Remember Child Solutions
-        child_solutions = 0
+        #child_solutions = 0
 
         # Recursively add new black blocks
-        for i in range(0,9):
-            pos = number_to_9x9(i)
-            _x = clue[0] + pos[0]
-            _y = clue[1] + pos[1]
+        #for i in range(0,9):
+        #    pos = number_to_9x9(i)
+        #    _x = clue[0] + pos[0]
+        #    _y = clue[1] + pos[1]
 
-            child_solutions += self.solve_step(_x,_y)
+        #    child_solutions += self.solve_step(_x,_y, 0)
+
+        self.iterate_solution()
+
+        # Validate
+        #print(self.valid_solution())
+
+        self.print_final_solution()
+
+        x = 0
+
+        for row in self.constructed_solution:
+            y = 0
+            for col in row:
+                value = col
+                if value < 0:
+                    self.constructed_solution[x][y] = 0
+                y += 1
+            x += 1
+
+        return self.constructed_solution
+
+    def update_board_clues(self):
+        x = 0
+        for row in self.clues:
+            y = 0
+            for col in row:
+                # Get Amount of White boxes
+                whites = self.number_of_white_squares_at(x,y)
+                # Get Amount of Black boxes
+                blacks = self.number_of_black_squares_at(x,y)
+                # Get Current Clue
+                clue = self.clues[x][y]
+                # A negative clue is already chosen as part of the puzzle set
+                # Therefore we only want to update positive numbers
+                if clue >= 0:
+                    # This is the maximum amount of black boxes we could have around this number
+                    self.clues[x][y] = whites + blacks
+
+                y += 1
+            x += 1
+
+    def pick_clue_at(self, x,y):
+        # Negative number means this clue is already picked
+        if self.clues[x][y] < 0:
+            return
+
+        # Get Amount of Restricted boxes
+        restricted = self.number_of_restricted_squares_at(x, y)
+        # Get Amount of Black boxes
+        blacks = self.number_of_black_squares_at(x, y)
+
+        do_restriction = restricted <= blacks
+
+        # We want to encourage taking the lowest number (higher numbers are easy)
+        take_higher_number = random.random() < 0.2
+
+        print("Restricted Amount: " + str(restricted) + " Black Amount: " + str(blacks) + " We want to pick higher: " + str(take_higher_number))
+        if take_higher_number:
+            # we do the opposite of what we would usually do
+            do_restriction = not do_restriction
+
+        # If Whites are the lowest number, we pick it, meaning
+        if do_restriction:
+            # Restrict all surrounding squares
+            self.restrict_around(x,y)
+        else:
+            # Fill all surrounding with black boxes
+            self.fill_around(x,y)
+
+        # Set Clue
+        self.clues[x][y] = -self.number_of_black_squares_at(x,y)
+
+    def get_unchosen_clue(self, border_discouragement):
+
+        # Border Discouragement gradually decreases from 1 to 0
+        # At 1, the entire board can be chosen from
+        # At 0, only the middle is taken into consideration
+
+        # The higher Board Wave is, the move we move inward
+        border_wave = 1 - border_discouragement * math.pi
+
+        border_wave = (math.sin(border_wave) + 1) /2
+
+        inner = math.floor((self.board_size -1)/2 * border_wave )
+        outer = math.floor((self.board_size -1) - (self.board_size -1)/2 * border_wave )
+
+        while_breaker = 5000
+        while while_breaker > 0:
+            while_breaker -= 1
+
+            picked_x = random.randint(inner, outer)
+            picked_y = random.randint(inner, outer)
+
+            picked_value = self.clues[picked_x][picked_y]
+
+            if picked_value > 0 :
+                return [picked_x,picked_y]
+        return [0,0]
 
 
-        return self.found_solutions
+    def choose_good_clue_position(self, border_discouragement):
+        # Picks x Random Positions on the board and evaluates their maximum and minimum Number value
+
+        amount_of_picks = random.randint(3,6)
+
+        start_clue = self.get_unchosen_clue(border_discouragement)
+
+        start_value = self.number_of_black_squares_at(start_clue[0], start_clue[1]) + self.number_of_white_squares_at(start_clue[0], start_clue[1])
+
+
+        for i in range(0, amount_of_picks):
+            other_clue = self.get_unchosen_clue(border_discouragement)
+
+            other_value = self.number_of_black_squares_at(other_clue[0], other_clue[1]) + self.number_of_white_squares_at(other_clue[0], other_clue[1])
+
+            if other_value < start_value:
+                start_clue = other_clue
+                start_value = other_value
+
+            print(str(other_clue) + " This Value is : " + str(other_value))
+
+        if start_value != -10:
+            print("Picking clue at " + str(start_clue[0]) + " " + str(start_clue[1]) + " with value " + str(start_value))
+            self.pick_clue_at(start_clue[0], start_clue[1])
+            return True
+
+        return False
+
+
+
+    def create_board(self, amount_of_clues, seed = 0):
+        self.constructed_solution = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
+        self.clues = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
+
+        random.seed(seed)
+
+        self.update_board_clues()
+
+        clues_left = amount_of_clues
+
+        while_breaker = 5000
+        while while_breaker > 0 and clues_left >= 0:
+            while_breaker -= 1
+
+            if self.choose_good_clue_position(clues_left / amount_of_clues):
+                clues_left -= 1
+
+            print("Step " + str(5000- while_breaker))
+
+            print("Current Solution:")
+            self.print_final_solution()
+            print("Current Clues:")
+            self.print_final_clue()
+
+        x = 0
+        # Cleanup Clue Board
+        for row in self.clues:
+            y = 0
+            for col in row:
+                value = col
+                if value <= 0:
+                    self.clues[x][y] = - value
+                else:
+                    self.clues[x][y] = -1
+                y += 1
+            x += 1
+        return self.clues
+
+

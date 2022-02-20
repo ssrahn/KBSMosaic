@@ -60,6 +60,10 @@ class Cube:
         self.value = val
 
 
+
+
+
+
 def generateRandomSolution(size, prob):
     sol = [[0 for j in range(size)] for i in range(size)]
 
@@ -108,16 +112,16 @@ def generateBoardFromSolution(size, solution, quant):
 
 
 def draw_window(surface, board):
-    surface.fill((255,255,255))
+    surface.fill((255, 255, 255))
     # Draw grid and board
     board.draw(surface)
 
 
 def main():
 
-    size = 5
-    quantity = 25
-    prob = 0.7
+    size = 10
+    quantity = 35
+    prob = 0.5
     num_inst = 1
     fname = "instances/"
 
@@ -129,22 +133,29 @@ def main():
 
 
     for i in range(num_inst):
+
+        solver = mosaicSolver.Solver(size )
+
         surface = pygame.display.set_mode((540,540))
         # List of Black or Empty Squares
-        sol = generateRandomSolution(size, prob)
+        #sol = generateRandomSolution(size, prob)
         # List of Numbers indicating Neighbors
-        board = generateBoardFromSolution(size, sol, quantity)
+        #board = generateBoardFromSolution(size, sol, quantity)
+        board = solver.create_board(quantity, 6)
+
         grid = Grid(size, board, 540, 540)
 
-        solver = mosaicSolver.Solver(size,board)
-        print( solver.get_solutions())
+
+        sol = solver.get_solutions(board)
 
         draw_window(surface, grid)
         pygame.image.save(surface, fname+"instance_"+str(i)+".png")
-        
+
         with open(fname+"instance_"+str(i)+".txt", 'w') as file:
             for row in sol:
                 file.write(' '.join([str(i) for i in row]) + '\n')
+
+        success = True
 
 main()
 pygame.quit()
