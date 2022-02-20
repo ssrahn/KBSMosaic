@@ -653,21 +653,27 @@ class Solver:
         # => There ought not to be any 9x9 area in our puzzle that isn't covered by any clue
 
         # Fill matrix with -1 where ever a clue is in a 9x9 area
-        self.constructed_solution = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
+        empty_squares = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
         x = 0
 
         for row in self.clues:
             y = 0
             for col in row:
                 if col <= 0:
-                    self.restrict_around(x,y)
+                    for i in range(0, 9):
+                        pos = number_to_9x9(i)
+                        _x = x + pos[0]
+                        _y = y + pos[1]
+
+                        if not self.is_out_of_bounds(_x, _y):
+                            empty_squares[_x][_y] = -1
                 y += 1
             x += 1
-        #self.print_board(self.constructed_solution)
+        #self.print_board(empty_squares)
 
         x = 0
         # Where ever there is a 0, we need put a clue around
-        for row in self.constructed_solution:
+        for row in empty_squares:
             y = 0
             for col in row:
                 if col == 0:
@@ -680,7 +686,13 @@ class Solver:
                     self.pick_clue_at(rand_x, rand_y)
 
                     # Restrict Further
-                    self.restrict_around(rand_x,rand_y)
+                    for i in range(0, 9):
+                        pos = number_to_9x9(i)
+                        _x = rand_x + pos[0]
+                        _y = rand_y + pos[1]
+
+                        if not self.is_out_of_bounds(_x, _y):
+                            empty_squares[_x][_y] = -1
 
                 y += 1
             x += 1

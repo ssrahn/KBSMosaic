@@ -120,7 +120,7 @@ def draw_window(surface, board):
 def main():
 
     size = 10
-    quantity = 15
+    quantity = 9
     prob = 0.5
     num_inst = 5
     fname = "instances/"
