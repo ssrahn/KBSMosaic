@@ -46,7 +46,7 @@ class Cube:
         self.board_size = board_size
 
     def draw(self, win):
-        fnt = pygame.font.SysFont("comicsans", 40)
+        fnt = pygame.font.SysFont("Arial", 40)
 
         gap = self.width / self.board_size
         x = self.col * gap
@@ -119,11 +119,11 @@ def draw_window(surface, board):
 
 def main():
 
-    size = 10
-    quantity = 9
+    size = 9
+    quantity = 35
     prob = 0.5
-    num_inst = 5
-    fname = "instances/"
+    num_inst = 100
+    fname = "../instances/"
 
     # size = int(sys.argv[1])
     # quantity = int(sys.argv[2])
@@ -134,7 +134,7 @@ def main():
 
     for i in range(num_inst):
 
-        solver = mosaicSolver.Solver(size )
+        solver = mosaicSolver.Solver(size)
 
         surface = pygame.display.set_mode((540,540))
         # List of Black or Empty Squares
@@ -142,6 +142,10 @@ def main():
         # List of Numbers indicating Neighbors
         #board = generateBoardFromSolution(size, sol, quantity)
         board = solver.create_board(quantity, 6+ i)
+        tmp = [[val if val!=-1 else 10 for val in row] for row in board]
+        with open(fname+"instance_"+str(i)+".txt", 'w') as file:
+            for row in tmp:
+                file.write(' '.join([str(i) for i in row]) + '\n')
 
         grid = Grid(size, board, 540, 540)
 
@@ -151,7 +155,7 @@ def main():
         draw_window(surface, grid)
         pygame.image.save(surface, fname+"instance_"+str(i)+".png")
 
-        with open(fname+"instance_"+str(i)+".txt", 'w') as file:
+        with open(fname+"solution_"+str(i)+".txt", 'w') as file:
             for row in sol:
                 file.write(' '.join([str(i) for i in row]) + '\n')
 
