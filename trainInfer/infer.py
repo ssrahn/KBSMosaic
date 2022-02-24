@@ -90,7 +90,6 @@ for model in models[0]:
         clue = [int(i) for i in model[5:-1].split(',')]
         clues[clue[0]-1][clue[1]-1] = clue[2]
     elif "marked" in model:
-        marks+=1
         mark = [int(i) for i in model[7:-1].split(',')]
         solved[mark[0]][mark[1]] = mark[2]
 print("Board detected:")

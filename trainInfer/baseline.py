@@ -112,7 +112,7 @@ for epoch in range(epochs):
     
     if (epoch+1)%val_mod==0:
     
-        for i_batch,batch in enumerate(validation_loader):
+        for i_batch,batch in enumerate(valid_loader):
             
             opt.zero_grad()
             x=batch[0]
