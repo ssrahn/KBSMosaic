@@ -19,11 +19,11 @@ board_size_str = str(board_size)
 
 dprogram = '''
 % neural rule
-nn(identify(81, img), [empty,0,1,2,3,4,5,6,7,8,9]).
+nn(identify(81, img), [0,1,2,3,4,5,6,7,8,9,empty]).
 
 % we assign one number at each position (R,C)
 clue(R,C,N) :- identify(Pos, img, N), R=Pos/9, C=Pos\9, N!=empty.
-1 {marked(R,C,M): M=0..1} 1 :- R=P/9, C=P\9, P=1..80.
+1 {marked(R,C,M): M=0..1} 1 :- R=P/9, C=P\9, P=0..80.
 
 :- clue(R,C,N), marked(R-1,C-1,M1), marked(R,C-1,M2), marked(R+1,C-1,M3), 
         marked(R-1,C,M4), marked(R,C,M5), marked(R+1,C,M6),
@@ -74,7 +74,7 @@ NeurASPobj = NeurASP(dprogram, nnMapping, optimizers)
 try:
     numOfData = int(sys.argv[1])
 except:
-    numOfData = 29
+    numOfData = 25
 dataList = dataList[:numOfData]
 obsList = obsList[:numOfData]
 
@@ -86,7 +86,7 @@ saveModelPath = 'model_data{}.pt'.format(numOfData)
 
 print('Use {} data to train the NN for 4000 epochs by NN only method (i.e., CrossEntropy loss)'.format(numOfData))
 print(r'The identification accuracy of M_{identify} will also be printed out.\n')
-for i in range(5):
+for i in range(15):
     if i == 0:
         print('\nBefore Training ...')
     else:

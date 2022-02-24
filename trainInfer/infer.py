@@ -6,6 +6,7 @@ import torch
 from dataGen import loadImage
 from network import Sudoku_Net
 from neurasp import NeurASP
+import numpy as np
 
 ######################################
 # The NeurASP program can be written in the scope of ''' Rules '''
@@ -13,13 +14,13 @@ from neurasp import NeurASP
 
 dprogram = '''
 % neural rule
-nn(identify(81, img), [empty,0,1,2,3,4,5,6,7,8,9]).
+nn(identify(81, img), [0,1,2,3,4,5,6,7,8,9,empty]).
 '''
 
 rules = '''
 % we assign one number at each position (R,C)
 clue(R,C,N) :- identify(Pos, img, N), R=Pos/9, C=Pos\9, N!=empty.
-1 {marked(R,C,M): M=0..1} 1 :- R=P/9, C=P\9, P=1..80.
+1 {marked(R,C,M): M=0..1} 1 :- R=P/9, C=P\9, P=0..80.
 
 :- clue(R,C,N), marked(R-1,C-1,M1), marked(R,C-1,M2), marked(R+1,C-1,M3), 
         marked(R-1,C,M4), marked(R,C,M5), marked(R+1,C,M6),
@@ -82,7 +83,7 @@ except:
 # Load pre-trained model
 ########
 
-numOfData = 29
+numOfData = 25
 saveModelPath = 'model_data{}.pt'.format(numOfData)
 print('\nLoad the model trained with {} instances of normal Sudoku puzzles'.format(numOfData))
 m.load_state_dict(torch.load('model_data{}.pt'.format(numOfData), map_location='cpu'))
@@ -93,4 +94,18 @@ m.load_state_dict(torch.load('model_data{}.pt'.format(numOfData), map_location='
 
 dataDic = {'img': image}
 models = NeurASPobj.infer(dataDic=dataDic, mvpp=rules)
-print('\nInference Result:\n', models[0])
+#print('\nInference Result:\n', models[0])
+
+clues = [[-1]*9 for _ in range(9)]
+solved = [[0]*9 for _ in range(9)]
+for model in models[0]:
+    if "clue" in model:
+        clue = [int(i) for i in model[5:-1].split(',')]
+        clues[clue[0]][clue[1]] = clue[2]
+    elif "marked" in model:
+        mark = [int(i) for i in model[7:-1].split(',')]
+        solved[mark[0]][mark[1]] = mark[2]
+print("Board detected:")
+print(np.array(clues))
+print("Board Solution:")
+print(np.array(solved))
