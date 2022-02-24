@@ -45,7 +45,18 @@ class Mosaik_dataset(Dataset):
         if self.transform:
             x = self.transform(x)
         return x,y
-    
+
+def to_onehot(y,batch_size):
+    ''' creates a one hot vector for the labels. y_onehot will be of shape (batch_size, 810)'''
+    nb_digits=11
+    one_hot_labels=torch.zeros(batch_size,891)
+    for i,v in enumerate(y):
+        y_onehot = torch.FloatTensor(81, nb_digits)
+        y_onehot.zero_()
+        y_onehot.scatter_(1, v.view(-1,1).long(), 1)
+        one_hot_labels[i]=y_onehot.view(-1)
+    return one_hot_labels
+
 def loadImage(path):
     im_frame = Image.open(path)
     np_frame = np.array(im_frame)

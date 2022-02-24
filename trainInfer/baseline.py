@@ -1,6 +1,6 @@
 import numpy as np
 import torch
-from network import Sudoku_Net
+from network import Mosaik_Net
 from  torch.utils.data import Dataset, DataLoader
 from torch.utils.data.sampler import SubsetRandomSampler
 import torch.optim as optim
@@ -39,8 +39,7 @@ valid_loader=DataLoader(dataset,batch_size=256, sampler=valid_sampler)
 # Instantiate Network
 # =============================================================================
 
-model = Sudoku_Net()
-model.cuda()
+model = Mosaik_Net()
 
 # =============================================================================
 # Network Parameters
@@ -76,20 +75,18 @@ for epoch in range(epochs):
     for i_batch,batch in enumerate(train_loader):
 
         opt.zero_grad()
-        x=batch[0].cuda()
+        x=batch[0]
         
         labels=batch[1].float()
         labels_acc=labels.view(-1,81)
-        labels=to_onehot(labels,len(labels)).cuda()
+        labels=to_onehot(labels,len(labels))
         
         outputs_acc=model(x)
         outputs=outputs_acc.view(len(labels),-1)
         outputs_acc=outputs_acc.max(2)[1].float() # take max over the probabilities
         loss = criterion(outputs,labels)
         loss.backward()
-        
-        labels_acc=labels_acc.cuda()
-        
+                
         acc=float((outputs_acc==labels_acc).sum())/outputs_acc.numel()
         acc_hist_train.append(acc)
         true_acc=0.
@@ -118,10 +115,10 @@ for epoch in range(epochs):
         for i_batch,batch in enumerate(validation_loader):
             
             opt.zero_grad()
-            x=batch[0].cuda()
+            x=batch[0]
             labels=batch[1].float()
             labels_acc=labels.view(-1,81)
-            labels=to_onehot(labels,len(labels)).cuda()
+            labels=to_onehot(labels,len(labels))
             
             outputs_acc=model(x)
             outputs=outputs_acc.view(len(labels),-1)
@@ -129,7 +126,6 @@ for epoch in range(epochs):
             
             loss = criterion(outputs,labels)
             
-            labels_acc=labels_acc.cuda()
             acc=float((outputs_acc==labels_acc).sum())/outputs_acc.numel()
             
             acc_hist_val.append(acc)

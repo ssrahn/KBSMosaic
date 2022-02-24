@@ -65,7 +65,7 @@ saveModelPath = 'model_data{}.pt'.format(numOfData)
 
 print('Use {} data to train the NN for 4000 epochs by NN only method (i.e., CrossEntropy loss)'.format(numOfData))
 print(r'The identification accuracy of M_{identify} will also be printed out.\n')
-for i in range(15):
+for i in range(5):
     if i == 0:
         print('\nBefore Training ...')
     else:

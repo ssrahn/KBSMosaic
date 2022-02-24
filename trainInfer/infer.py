@@ -85,7 +85,6 @@ print('\nInference Result:\n', models[0])
 
 clues = [[-1]*9 for _ in range(9)]
 solved = [[-5]*11 for _ in range(11)]
-marks = 0
 for model in models[0]:
     if "clue" in model:
         clue = [int(i) for i in model[5:-1].split(',')]

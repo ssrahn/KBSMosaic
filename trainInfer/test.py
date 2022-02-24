@@ -13,10 +13,10 @@ from network import Mosaik_Net
 
 dprogram = '''
 % neural rule
-nn(identify(81, img), [0,1,2,3,4,5,6,7,8,9,empty]).
+nn(identify(81, img), [0,1,2,3,4,5,6,7,8,9]).
 
 % Add each clue from the input image to our rule sets
-clue(R,C,N) :- identify(Pos, img, N), R=Pos/9+1, C=Pos\9+1, N!=empty.
+clue(R,C,N) :- identify(Pos, img, N), R=Pos/9+1, C=Pos\9+1.
 
 % Display the solution board where each cell is marked or unmarked, according to the clues
 % Size of the solution board is larger, but without markings so that the following calculations also work for boundary conditions
