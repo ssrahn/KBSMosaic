@@ -636,7 +636,7 @@ class Solver:
         self.constructed_solution = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
         self.clues = [[0 for j in range(self.board_size)] for i in range(self.board_size)]
 
-        random.seed(seed)
+        #random.seed(seed)
 
         self.update_board_clues()
 
