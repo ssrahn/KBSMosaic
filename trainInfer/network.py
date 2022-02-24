@@ -1,9 +1,9 @@
 from torch import nn
 import torch.nn.functional as F
 
-class Sudoku_Net(nn.Module):
+class Mosaik_Net(nn.Module):
     def __init__(self):
-        super(Sudoku_Net, self).__init__()
+        super(Mosaik_Net, self).__init__()
         self.conv1 = nn.Conv2d(1, 32,kernel_size=4,stride=2)
         self.conv1_bn=nn.BatchNorm2d(32)
         self.dropout1=nn.Dropout(p=.25)
