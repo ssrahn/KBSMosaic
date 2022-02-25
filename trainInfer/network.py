@@ -27,7 +27,7 @@ class Mosaik_Net(nn.Module):
         self.conv1x1_2=nn.Conv2d(in_channels=512,out_channels=512,kernel_size=1)
         self.conv1x1_3=nn.Conv2d(in_channels=512,out_channels=11,kernel_size=1)
         
-        self.fc1=nn.Linear(41472,81*10)
+        self.fc1=nn.Linear(41472,81*11)
         self.dropout5=nn.Dropout(p=.25)
         
     def forward(self, x):
