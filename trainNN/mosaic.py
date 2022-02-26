@@ -29,26 +29,22 @@ def test_accuracy(feats, labels):
         
     print(correct/feats.shape[0])
 
-def solve_mosaic(game):
-    game = game.replace('\n', '')
-    game = game.replace(' ', '')
-    game = np.array([int(j) for j in game]).reshape((9,9,1))
-    game = norm(game)
-    game = inference_mosaic(game)
-    return game
+if __name__=="__main__":
+    if len(sys.argv) < 2:
+        print("usage: python mosaic.py <dataset> <optional model>")
+        exit()
+    
+    x_train, x_test, y_train, y_test = get_data(sys.argv[1])
 
+    if len(sys.argv) > 2:
+        model = keras.models.load_model(sys.argv[2])
+    else:
+        model = get_model()
 
-x_train, x_test, y_train, y_test = get_data('../instances/data.csv')
+        adam = keras.optimizers.Adam(lr=.001)
+        model.compile(loss='sparse_categorical_crossentropy', optimizer=adam)
 
-if len(sys.argv) > 1:
-    model = keras.models.load_model(sys.argv[1])
-else:
-    model = get_model()
+        model.fit(x_train, y_train, batch_size=32, epochs=10)
+        model.save('model.h5')
 
-    adam = keras.optimizers.Adam(lr=.001)
-    model.compile(loss='sparse_categorical_crossentropy', optimizer=adam)
-
-    model.fit(x_train, y_train, batch_size=32, epochs=10)
-    model.save('model.h5')
-
-test_accuracy(x_test[:100], y_test[:100])
+    test_accuracy(x_test[:100], y_test[:100])

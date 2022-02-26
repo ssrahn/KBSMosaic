@@ -5,22 +5,20 @@ import time
 import torch
 
 from dataGen import dataList, obsList, train_loader, test_loader
+from network import Mosaic_Net
 from neurasp import NeurASP
-from network import Sudoku_Net
 
 startTime = time.time()
 
 ######################################
 # The NeurASP program can be written in the scope of ''' Rules '''
-# It can also be written in a file
 ######################################
-
 dprogram = '''
 % neural rule
-nn(sol(81, config), [0,1,2,3,4,5,6,7,8,9]).
+nn(identify(81, img), [0,1,2,3,4,5,6,7,8,9,empty]).
 
 % Add each clue from the input image to our rule sets
-clue(R,C,N) :- sol(Pos, config, N), R=Pos/9+1, C=Pos\9+1.
+clue(R,C,N) :- identify(Pos, img, N), R=Pos/9+1, C=Pos\9+1, N!=empty.
 
 % Display the solution board where each cell is marked or unmarked, according to the clues
 % Size of the solution board is larger, but without markings so that the following calculations also work for boundary conditions
@@ -44,32 +42,48 @@ marked(0..10,10,0).
 # Define nnMapping and optimizers, initialze NeurASP object
 ########
 
-m = Sudoku_Net()
-nnMapping = {'sol': m}
-optimizers = {'sol': torch.optim.Adam(m.parameters(), lr=0.0001)}
-NeurASPobj = NeurASP(dprogram, nnMapping, optimizers, gpu=True)
+m = Mosaic_Net()
+nnMapping = {'identify': m}
+optimizers = {'identify': torch.optim.Adam(m.parameters(), lr=0.0001)}
+NeurASPobj = NeurASP(dprogram, nnMapping, optimizers)
 
 ########
-# Start training and testing
+# Set up the number of data to be used in training
+########
+try:
+    numOfData = int(sys.argv[1])
+except:
+    numOfData = 25
+dataList = dataList[:numOfData]
+obsList = obsList[:numOfData]
+
+########
+# Start training from scratch and testing
 ########
 
-print('Initial test accuracy (whole board): {:0.2f}%\nInitial test accuracy (single cell): {:0.2f}%'.format(*NeurASPobj.testNN('sol', test_loader)))
+saveModelPath = 'model_data{}.pt'.format(numOfData)
 
-for i in range(100):
-    print('Training for Epoch {}...'.format(i+1))
-    time1 = time.time()
-    NeurASPobj.learn(dataList=dataList, obsList=obsList, epoch=1, smPickle='stableModels.pickle')
-    time2 = time.time()
-    acc, singleAcc = NeurASPobj.testNN('sol', train_loader)
-    print('Train Acc (whole board): {:0.2f}%'.format(acc))
-    print('Train Acc (single cell): {:0.2f}%'.format(singleAcc))
-    acc, singleAcc = NeurASPobj.testNN('sol', test_loader)
-    print('Test Acc (whole board): {:0.2f}%'.format(acc))
-    print('Test Acc (single cell): {:0.2f}%'.format(singleAcc))
-    print("--- train time: %s seconds ---" % (time2 - time1))
-    print("--- test time: %s seconds ---" % (time.time() - time2))
+print('Use {} data to train the NN for 4000 epochs by NN only method (i.e., CrossEntropy loss)'.format(numOfData))
+print(r'The identification accuracy of M_{identify} will also be printed out.\n')
+for i in range(5):
+    if i == 0:
+        print('\nBefore Training ...')
+    else:
+        print('\nContinuously Training for 100 Epochs -- Round {} ...'.format(i))
+        time1 = time.time()
+        # here alpha=1 means rules are not used in training, in other words, it's usual NN training with cross entropy loss
+        NeurASPobj.learn(dataList=dataList, obsList=obsList, alpha=1, epoch=100, lossFunc='cross')
+        time2 = time.time()
+        print("--- train time: %s seconds ---" % (time2 - time1))        
+
+    acc, singleAcc = NeurASPobj.testNN('identify', train_loader)
+    print('Train Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
+    print('Train Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
+    acc, singleAcc = NeurASPobj.testNN('identify', test_loader)
+    print('Test Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
+    print('Test Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
     print('--- total time from beginning: %s minutes ---' % int((time.time() - startTime)/60) )
-    
-    saveModelPath = 'model/model_epoch{}.pt'.format(i+1)
-    print('Storing the trained model into {}'.format(saveModelPath))
-    torch.save(m.state_dict(), saveModelPath)
+
+# save the trained model
+print('Storing the trained model into {}'.format(saveModelPath))
+torch.save(m.state_dict(), saveModelPath)

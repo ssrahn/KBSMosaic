@@ -117,11 +117,9 @@ def draw_window(surface, board):
     # Draw grid and board
     board.draw(surface)
 
-def genCSV():
+def genCSV(fname, num_inst):
     size = 9
     quantity = 1
-    num_inst = 100000
-    fname = "../instances/data.csv"
 
     with open(fname, 'w') as f:
         f.truncate(0)
@@ -141,29 +139,19 @@ def genCSV():
             writer.writerow([board_s, sol_s])
         print("\n")
 
-def main():
+def genPNG(fname, num_inst):
     pygame.font.init()
 
     size = 9
-    quantity = 15
-    num_inst = 5
-    fname = "../instances/"
-
-    # size = int(sys.argv[1])
-    # quantity = int(sys.argv[2])
-    # prob = float(sys.argv[3])
-    # num_inst = int(sys.argv[4])
-    # fname = sys.argv[5]
-
+    quantity = 5
 
     for i in range(num_inst):
+        print('Instance: {}'.format(i), end='\r')
+
         solver = mosaicSolver.Solver(size)
 
         surface = pygame.display.set_mode((540,540))
-        # List of Black or Empty Squares
-        #sol = generateRandomSolution(size, prob)
-        # List of Numbers indicating Neighbors
-        #board = generateBoardFromSolution(size, sol, quantity)
+
         board = solver.create_board(quantity, 6+ i)
         tmp = [[val if val!=-1 else 10 for val in row] for row in board]
         with open(fname+"instance_"+str(i)+".txt", 'w') as file:
@@ -172,19 +160,27 @@ def main():
 
         grid = Grid(size, board, 540, 540)
 
-
-        sol = solver.get_solutions(board)
-
         draw_window(surface, grid)
         pygame.image.save(surface, fname+"instance_"+str(i)+".png")
 
+        """
+        sol = solver.get_solutions(board)
         with open(fname+"solution_"+str(i)+".txt", 'w') as file:
             for row in sol:
                 file.write(' '.join([str(i) for i in row]) + '\n')
-
-        success = True
+        """
     pygame.quit()
 
-#main()
-genCSV()
+if __name__=="__main__":
+    if len(sys.argv) < 1:
+        print("usage: python mosaicGenerator.py <file path> <number instances>")
+        exit()
+    fname = sys.argv[1]
+    num_inst = int(sys.argv[2])
+
+    if fname[-3:] == "csv":
+        genCSV(fname, num_inst)
+    else:
+        if fname[-1] != '/': fname += "/"
+        genPNG(fname, num_inst)
 
