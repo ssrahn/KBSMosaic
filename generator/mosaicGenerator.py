@@ -6,9 +6,10 @@ import pygame
 import copy
 import random
 import mosaicSolver
+import csv
+import numpy as np
 
 random.seed(time.time())
-pygame.font.init()
 
 SOLUTION_EMPTY = 0
 SOLUTION_BLACK = 1
@@ -116,13 +117,36 @@ def draw_window(surface, board):
     # Draw grid and board
     board.draw(surface)
 
+def genCSV():
+    size = 9
+    quantity = 1
+    num_inst = 100000
+    fname = "../instances/data.csv"
+
+    with open(fname, 'w') as f:
+        f.truncate(0)
+        writer = csv.writer(f)
+        writer.writerow(['board', 'solution'])
+
+        for i in range(num_inst):
+            print('Instance: {}'.format(i), end='\r')
+            quantity = ((quantity+1)%15)+1
+
+            solver = mosaicSolver.Solver(size)
+            board = solver.create_board(quantity, 6+ i)
+            board_s = ','.join(str(i) for i in np.array(board).reshape(81))
+            sol = solver.get_solutions(board)
+            sol_s = ','.join(str(i) for i in np.array(sol).reshape(81))
+
+            writer.writerow([board_s, sol_s])
+        print("\n")
 
 def main():
+    pygame.font.init()
 
     size = 9
-    quantity = 35
-    prob = 0.5
-    num_inst = 100
+    quantity = 15
+    num_inst = 5
     fname = "../instances/"
 
     # size = int(sys.argv[1])
@@ -133,7 +157,6 @@ def main():
 
 
     for i in range(num_inst):
-
         solver = mosaicSolver.Solver(size)
 
         surface = pygame.display.set_mode((540,540))
@@ -160,7 +183,8 @@ def main():
                 file.write(' '.join([str(i) for i in row]) + '\n')
 
         success = True
+    pygame.quit()
 
-main()
-pygame.quit()
+#main()
+genCSV()
 
