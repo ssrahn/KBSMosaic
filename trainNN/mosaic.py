@@ -30,8 +30,7 @@ def test_accuracy(feats, labels):
             correct_whole += 1
         correct_cell += (81-diff)/81
     
-    print(correct_cell/feats.shape[0])
-    print(correct_whole/feats.shape[0])
+    return correct_whole/feats.shape[0], correct_cell/feats.shape[0]
 
 if __name__=="__main__":
     if len(sys.argv) < 2:
@@ -56,7 +55,8 @@ if __name__=="__main__":
     print("\nSummary:")
     print(model.summary())
     print("evaluation:")
-    print(model.evaluate(x_test, y_test))
+    print("Loss:", model.evaluate(x_test, y_test))
     keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
-    test_accuracy(x_test[:100], y_test[:100])
-
+    acc_whole, acc_cell = test_accuracy(x_test[:100], y_test[:100])
+    print("Acc whole board:", round(acc_whole,2))
+    print("Acc single cell:", round(acc_cell,2))
