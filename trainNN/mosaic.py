@@ -20,14 +20,18 @@ def inference_mosaic(sample):
     return pred
 
 def test_accuracy(feats, labels):
-    correct = 0
+    correct_whole = 0
+    correct_cell = 0
     for i,feat in enumerate(feats):
         pred = inference_mosaic(feat)        
-        true = labels[i].reshape((9,9))     
-        if(abs(true - pred).sum()==0):
-            correct += 1
-        
-    print(correct/feats.shape[0])
+        true = labels[i].reshape((9,9))
+        diff = abs(true - pred).sum()
+        if(diff==0):
+            correct_whole += 1
+        correct_cell += (81-diff)/81
+    
+    print(correct_cell/feats.shape[0])
+    print(correct_whole/feats.shape[0])
 
 if __name__=="__main__":
     if len(sys.argv) < 2:
@@ -44,7 +48,15 @@ if __name__=="__main__":
         adam = keras.optimizers.Adam(lr=.001)
         model.compile(loss='sparse_categorical_crossentropy', optimizer=adam)
 
-        model.fit(x_train, y_train, batch_size=32, epochs=10)
+        history = model.fit(x_train, y_train, batch_size=32, epochs=10)
+        print("history:")
+        print(history.history)
         model.save('model.h5')
 
+    print("\nSummary:")
+    print(model.summary())
+    print("evaluation:")
+    print(model.evaluate(x_test, y_test))
+    keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
     test_accuracy(x_test[:100], y_test[:100])
+
