@@ -1,0 +1,166 @@
+Epoch 5
+batch_size 16
+data_size 100.000
+learning rate = 0.001
+
+Epoch 1/5
+4688/4688 [==============================] - 35s 7ms/step - loss: 0.1308
+Epoch 2/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0641
+Epoch 3/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0492
+Epoch 4/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0402
+Epoch 5/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0340
+--- train time: 2 minutes ---
+history:
+{'loss': [0.1307886391878128, 0.06410353630781174, 0.04918547719717026, 0.040247805416584015, 0.03399885445833206]}
+
+Summary:
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 9, 9, 64)          640       
+                                                                 
+ batch_normalization (BatchN  (None, 9, 9, 64)         256       
+ ormalization)                                                   
+                                                                 
+ conv2d_1 (Conv2D)           (None, 9, 9, 64)          36928     
+                                                                 
+ batch_normalization_1 (Batc  (None, 9, 9, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ conv2d_2 (Conv2D)           (None, 9, 9, 128)         8320      
+                                                                 
+ flatten (Flatten)           (None, 10368)             0         
+                                                                 
+ dense (Dense)               (None, 162)               1679778   
+                                                                 
+ reshape (Reshape)           (None, 81, 2)             0         
+                                                                 
+ activation (Activation)     (None, 81, 2)             0         
+                                                                 
+=================================================================
+Total params: 1,726,178
+Trainable params: 1,725,922
+Non-trainable params: 256
+_________________________________________________________________
+None
+evaluation:
+782/782 [==============================] - 2s 2ms/step - loss: 0.0545
+Loss: 0.05453263595700264
+Acc whole board: 0.23
+Acc single cell: 0.98
+
+
+=================================================================
+
+learning rate = 0.01
+
+Epoch 1/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.1526
+Epoch 2/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0867
+Epoch 3/5
+4688/4688 [==============================] - 35s 7ms/step - loss: 0.0756
+Epoch 4/5
+4688/4688 [==============================] - 35s 7ms/step - loss: 0.0701
+Epoch 5/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0666
+--- train time: 2 minutes ---
+history:
+{'loss': [0.1526169329881668, 0.08669492602348328, 0.07560890167951584, 0.07009560614824295, 0.06657411903142929]}
+
+Summary:
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 9, 9, 64)          640       
+                                                                 
+ batch_normalization (BatchN  (None, 9, 9, 64)         256       
+ ormalization)                                                   
+                                                                 
+ conv2d_1 (Conv2D)           (None, 9, 9, 64)          36928     
+                                                                 
+ batch_normalization_1 (Batc  (None, 9, 9, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ conv2d_2 (Conv2D)           (None, 9, 9, 128)         8320      
+                                                                 
+ flatten (Flatten)           (None, 10368)             0         
+                                                                 
+ dense (Dense)               (None, 162)               1679778   
+                                                                 
+ reshape (Reshape)           (None, 81, 2)             0         
+                                                                 
+ activation (Activation)     (None, 81, 2)             0         
+                                                                 
+=================================================================
+Total params: 1,726,178
+Trainable params: 1,725,922
+Non-trainable params: 256
+_________________________________________________________________
+None
+evaluation:
+782/782 [==============================] - 2s 2ms/step - loss: 0.0678
+Loss: 0.06777554005384445
+Acc whole board: 0.19
+Acc single cell: 0.97
+
+
+=================================================================
+learning rate = 0.0001
+
+Epoch 1/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.2518
+Epoch 2/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.1109
+Epoch 3/5
+4688/4688 [==============================] - 35s 8ms/step - loss: 0.0869
+Epoch 4/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0727
+Epoch 5/5
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0627
+--- train time: 2 minutes ---
+history:
+{'loss': [0.25179991126060486, 0.11092579364776611, 0.08691892772912979, 0.07266759127378464, 0.06269236654043198]}
+
+Summary:
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 9, 9, 64)          640       
+                                                                 
+ batch_normalization (BatchN  (None, 9, 9, 64)         256       
+ ormalization)                                                   
+                                                                 
+ conv2d_1 (Conv2D)           (None, 9, 9, 64)          36928     
+                                                                 
+ batch_normalization_1 (Batc  (None, 9, 9, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ conv2d_2 (Conv2D)           (None, 9, 9, 128)         8320      
+                                                                 
+ flatten (Flatten)           (None, 10368)             0         
+                                                                 
+ dense (Dense)               (None, 162)               1679778   
+                                                                 
+ reshape (Reshape)           (None, 81, 2)             0         
+                                                                 
+ activation (Activation)     (None, 81, 2)             0         
+                                                                 
+=================================================================
+Total params: 1,726,178
+Trainable params: 1,725,922
+Non-trainable params: 256
+_________________________________________________________________
+None
+evaluation:
+782/782 [==============================] - 2s 2ms/step - loss: 0.0700
+Loss: 0.06997128576040268
+Acc whole board: 0.12
+Acc single cell: 0.97

@@ -1,0 +1,53 @@
+Epoch 4
+batch_size 16
+data_size 100.000
+learning rate = 0.001
+
+Epoch 1/4
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.1325
+Epoch 2/4
+4688/4688 [==============================] - 33s 7ms/step - loss: 0.0665
+Epoch 3/4
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0510
+Epoch 4/4
+4688/4688 [==============================] - 34s 7ms/step - loss: 0.0418
+--- train time: 2 minutes ---
+history:
+{'loss': [0.13252714276313782, 0.06649491935968399, 0.05097094550728798, 0.041754551231861115]}
+
+Summary:
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 9, 9, 64)          640       
+                                                                 
+ batch_normalization (BatchN  (None, 9, 9, 64)         256       
+ ormalization)                                                   
+                                                                 
+ conv2d_1 (Conv2D)           (None, 9, 9, 64)          36928     
+                                                                 
+ batch_normalization_1 (Batc  (None, 9, 9, 64)         256       
+ hNormalization)                                                 
+                                                                 
+ conv2d_2 (Conv2D)           (None, 9, 9, 128)         8320      
+                                                                 
+ flatten (Flatten)           (None, 10368)             0         
+                                                                 
+ dense (Dense)               (None, 162)               1679778   
+                                                                 
+ reshape (Reshape)           (None, 81, 2)             0         
+                                                                 
+ activation (Activation)     (None, 81, 2)             0         
+                                                                 
+=================================================================
+Total params: 1,726,178
+Trainable params: 1,725,922
+Non-trainable params: 256
+_________________________________________________________________
+None
+evaluation:
+782/782 [==============================] - 2s 2ms/step - loss: 0.0538
+Loss: 0.053792573511600494
+Acc whole board: 0.23
+Acc single cell: 0.98

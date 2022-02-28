@@ -6,6 +6,7 @@ import torch
 from dataGen import dataListTest, obsListTest, test_loader
 from neurasp import NeurASP
 from network import Mosaic_Net
+from torchinfo import summary
 
 ######################################
 # The NeurASP program can be written in the scope of ''' Rules '''
@@ -54,9 +55,11 @@ for num in numOfData:
     print('\nLoad the model trained with {} data'.format(num))
     m.load_state_dict(torch.load('model_data{}.pt'.format(num), map_location='cpu'))
 
+    summary(m)
+
     # start testing
     acc, singleAcc = NeurASPobj.testNN('identify', test_loader)
     print('Test Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
     print('Test Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
-    acc = NeurASPobj.testInferenceResults(dataListTest, obsListTest)
-    print('Test Acc Using NeurASP (whole board): {:0.2f}%'.format(acc))
+    #acc = NeurASPobj.testInferenceResults(dataListTest, obsListTest)
+    #print('Test Acc Using NeurASP (whole board): {:0.2f}%'.format(acc))

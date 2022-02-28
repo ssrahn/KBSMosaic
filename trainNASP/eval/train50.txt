@@ -1,0 +1,716 @@
+
+Before Training ...
+Train Acc Using Pure NN (whole board): 0.00%
+Train Acc Using Pure NN (single cell): 7.65%
+Test Acc Using Pure NN (whole board): 0.00%
+Test Acc Using Pure NN (single cell): 8.16%
+--- total time from beginning: 0 minutes ---
+
+Continuously Training for 100 Epochs -- Round 1 ...
+--- train time: 98.19249510765076 seconds ---Train Acc Using Pure NN (whole board): 88.00%
+Train Acc Using Pure NN (single cell): 99.85%
+Test Acc Using Pure NN (whole board): 14.67%
+Test Acc Using Pure NN (single cell): 97.71%
+--- total time from beginning: 1 minutes ---
+
+Continuously Training for 100 Epochs -- Round 2 ...
+--- train time: 97.25918769836426 seconds ---Train Acc Using Pure NN (whole board): 96.00%
+Train Acc Using Pure NN (single cell): 99.95%
+Test Acc Using Pure NN (whole board): 22.67%
+Test Acc Using Pure NN (single cell): 98.34%
+--- total time from beginning: 3 minutes ---
+
+Continuously Training for 100 Epochs -- Round 3 ...
+--- train time: 95.44522452354431 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 25.33%
+Test Acc Using Pure NN (single cell): 98.53%
+--- total time from beginning: 4 minutes ---
+
+Continuously Training for 100 Epochs -- Round 4 ...
+--- train time: 97.36881470680237 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 32.00%
+Test Acc Using Pure NN (single cell): 98.67%
+--- total time from beginning: 6 minutes ---
+
+Continuously Training for 100 Epochs -- Round 5 ...
+--- train time: 96.27668595314026 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 38.67%
+Test Acc Using Pure NN (single cell): 98.81%
+--- total time from beginning: 8 minutes ---
+
+Continuously Training for 100 Epochs -- Round 6 ...
+--- train time: 97.55981206893921 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 36.00%
+Test Acc Using Pure NN (single cell): 98.73%
+--- total time from beginning: 9 minutes ---
+
+Continuously Training for 100 Epochs -- Round 7 ...
+--- train time: 97.71773624420166 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 40.00%
+Test Acc Using Pure NN (single cell): 98.77%
+--- total time from beginning: 11 minutes ---
+
+Continuously Training for 100 Epochs -- Round 8 ...
+--- train time: 97.3718364238739 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 36.00%
+Test Acc Using Pure NN (single cell): 98.70%
+--- total time from beginning: 13 minutes ---
+
+Continuously Training for 100 Epochs -- Round 9 ...
+--- train time: 96.94742488861084 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 45.33%
+Test Acc Using Pure NN (single cell): 98.95%
+--- total time from beginning: 14 minutes ---
+
+Continuously Training for 100 Epochs -- Round 10 ...
+--- train time: 95.67972993850708 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 45.33%
+Test Acc Using Pure NN (single cell): 98.93%
+--- total time from beginning: 16 minutes ---
+
+Continuously Training for 100 Epochs -- Round 11 ...
+--- train time: 97.10357570648193 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 45.33%
+Test Acc Using Pure NN (single cell): 98.98%
+--- total time from beginning: 17 minutes ---
+
+Continuously Training for 100 Epochs -- Round 12 ...
+--- train time: 97.1692795753479 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 32.00%
+Test Acc Using Pure NN (single cell): 98.68%
+--- total time from beginning: 19 minutes ---
+
+Continuously Training for 100 Epochs -- Round 13 ...
+--- train time: 97.62035727500916 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 38.67%
+Test Acc Using Pure NN (single cell): 98.91%
+--- total time from beginning: 21 minutes ---
+
+Continuously Training for 100 Epochs -- Round 14 ...
+--- train time: 97.01114583015442 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.09%
+--- total time from beginning: 22 minutes ---
+
+Continuously Training for 100 Epochs -- Round 15 ...
+--- train time: 95.55454587936401 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 33.33%
+Test Acc Using Pure NN (single cell): 98.37%
+--- total time from beginning: 24 minutes ---
+
+Continuously Training for 100 Epochs -- Round 16 ...
+--- train time: 96.68104839324951 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 38.67%
+Test Acc Using Pure NN (single cell): 98.78%
+--- total time from beginning: 26 minutes ---
+
+Continuously Training for 100 Epochs -- Round 17 ...
+--- train time: 97.07151651382446 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 44.00%
+Test Acc Using Pure NN (single cell): 98.98%
+--- total time from beginning: 27 minutes ---
+
+Continuously Training for 100 Epochs -- Round 18 ...
+--- train time: 97.13917660713196 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 46.67%
+Test Acc Using Pure NN (single cell): 99.01%
+--- total time from beginning: 29 minutes ---
+
+Continuously Training for 100 Epochs -- Round 19 ...
+--- train time: 97.56736874580383 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.06%
+--- total time from beginning: 31 minutes ---
+
+Continuously Training for 100 Epochs -- Round 20 ...
+--- train time: 96.47719621658325 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 44.00%
+Test Acc Using Pure NN (single cell): 99.03%
+--- total time from beginning: 32 minutes ---
+
+Continuously Training for 100 Epochs -- Round 21 ...
+--- train time: 97.60702013969421 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.19%
+--- total time from beginning: 34 minutes ---
+
+Continuously Training for 100 Epochs -- Round 22 ...
+--- train time: 96.546151638031 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.11%
+--- total time from beginning: 35 minutes ---
+
+Continuously Training for 100 Epochs -- Round 23 ...
+--- train time: 96.45191144943237 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 53.33%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 37 minutes ---
+
+Continuously Training for 100 Epochs -- Round 24 ...
+--- train time: 96.42309236526489 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.18%
+--- total time from beginning: 39 minutes ---
+
+Continuously Training for 100 Epochs -- Round 25 ...
+--- train time: 97.21239590644836 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.13%
+--- total time from beginning: 40 minutes ---
+
+Continuously Training for 100 Epochs -- Round 26 ...
+--- train time: 97.53590846061707 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.19%
+--- total time from beginning: 42 minutes ---
+
+Continuously Training for 100 Epochs -- Round 27 ...
+--- train time: 97.28796768188477 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 46.67%
+Test Acc Using Pure NN (single cell): 99.09%
+--- total time from beginning: 44 minutes ---
+
+Continuously Training for 100 Epochs -- Round 28 ...
+--- train time: 96.98609828948975 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.19%
+--- total time from beginning: 45 minutes ---
+
+Continuously Training for 100 Epochs -- Round 29 ...
+--- train time: 97.11449146270752 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 33.33%
+Test Acc Using Pure NN (single cell): 98.67%
+--- total time from beginning: 47 minutes ---
+
+Continuously Training for 100 Epochs -- Round 30 ...
+--- train time: 98.22597241401672 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 53.33%
+Test Acc Using Pure NN (single cell): 99.23%
+--- total time from beginning: 48 minutes ---
+
+Continuously Training for 100 Epochs -- Round 31 ...
+--- train time: 98.7743034362793 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 45.33%
+Test Acc Using Pure NN (single cell): 99.11%
+--- total time from beginning: 50 minutes ---
+
+Continuously Training for 100 Epochs -- Round 32 ...
+--- train time: 97.78925800323486 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.13%
+--- total time from beginning: 52 minutes ---
+
+Continuously Training for 100 Epochs -- Round 33 ...
+--- train time: 97.43567967414856 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.06%
+--- total time from beginning: 53 minutes ---
+
+Continuously Training for 100 Epochs -- Round 34 ...
+--- train time: 97.06616044044495 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 40.00%
+Test Acc Using Pure NN (single cell): 98.85%
+--- total time from beginning: 55 minutes ---
+
+Continuously Training for 100 Epochs -- Round 35 ...
+--- train time: 96.98198342323303 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.29%
+--- total time from beginning: 57 minutes ---
+
+Continuously Training for 100 Epochs -- Round 36 ...
+--- train time: 97.54730224609375 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 45.33%
+Test Acc Using Pure NN (single cell): 99.00%
+--- total time from beginning: 58 minutes ---
+
+Continuously Training for 100 Epochs -- Round 37 ...
+--- train time: 96.05594635009766 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 57.33%
+Test Acc Using Pure NN (single cell): 99.24%
+--- total time from beginning: 60 minutes ---
+
+Continuously Training for 100 Epochs -- Round 38 ...
+--- train time: 96.0445647239685 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 44.00%
+Test Acc Using Pure NN (single cell): 99.09%
+--- total time from beginning: 62 minutes ---
+
+Continuously Training for 100 Epochs -- Round 39 ...
+--- train time: 97.16120910644531 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.18%
+--- total time from beginning: 63 minutes ---
+
+Continuously Training for 100 Epochs -- Round 40 ...
+--- train time: 96.57692217826843 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.13%
+--- total time from beginning: 65 minutes ---
+
+Continuously Training for 100 Epochs -- Round 41 ...
+--- train time: 94.45528435707092 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 61.33%
+Test Acc Using Pure NN (single cell): 99.33%
+--- total time from beginning: 66 minutes ---
+
+Continuously Training for 100 Epochs -- Round 42 ...
+--- train time: 96.41782402992249 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.06%
+--- total time from beginning: 68 minutes ---
+
+Continuously Training for 100 Epochs -- Round 43 ...
+--- train time: 95.83147025108337 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 42.67%
+Test Acc Using Pure NN (single cell): 98.98%
+--- total time from beginning: 70 minutes ---
+
+Continuously Training for 100 Epochs -- Round 44 ...
+--- train time: 95.24768805503845 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 57.33%
+Test Acc Using Pure NN (single cell): 99.28%
+--- total time from beginning: 71 minutes ---
+
+Continuously Training for 100 Epochs -- Round 45 ...
+--- train time: 96.91688013076782 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.19%
+--- total time from beginning: 73 minutes ---
+
+Continuously Training for 100 Epochs -- Round 46 ...
+--- train time: 96.64312028884888 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 74 minutes ---
+
+Continuously Training for 100 Epochs -- Round 47 ...
+--- train time: 94.73926329612732 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.23%
+--- total time from beginning: 76 minutes ---
+
+Continuously Training for 100 Epochs -- Round 48 ...
+--- train time: 96.41254091262817 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.23%
+--- total time from beginning: 78 minutes ---
+
+Continuously Training for 100 Epochs -- Round 49 ...
+--- train time: 97.30738711357117 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 53.33%
+Test Acc Using Pure NN (single cell): 99.23%
+--- total time from beginning: 79 minutes ---
+
+Continuously Training for 100 Epochs -- Round 50 ...
+--- train time: 97.31702136993408 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.05%
+--- total time from beginning: 81 minutes ---
+
+Continuously Training for 100 Epochs -- Round 51 ...
+--- train time: 96.44568991661072 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 57.33%
+Test Acc Using Pure NN (single cell): 99.21%
+--- total time from beginning: 83 minutes ---
+
+Continuously Training for 100 Epochs -- Round 52 ...
+--- train time: 97.91995358467102 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 54.67%
+Test Acc Using Pure NN (single cell): 99.21%
+--- total time from beginning: 84 minutes ---
+
+Continuously Training for 100 Epochs -- Round 53 ...
+--- train time: 95.43229126930237 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.24%
+--- total time from beginning: 86 minutes ---
+
+Continuously Training for 100 Epochs -- Round 54 ...
+--- train time: 97.63893365859985 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.26%
+--- total time from beginning: 87 minutes ---
+
+Continuously Training for 100 Epochs -- Round 55 ...
+--- train time: 97.6045913696289 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.18%
+--- total time from beginning: 89 minutes ---
+
+Continuously Training for 100 Epochs -- Round 56 ...
+--- train time: 94.70565390586853 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 41.33%
+Test Acc Using Pure NN (single cell): 98.88%
+--- total time from beginning: 91 minutes ---
+
+Continuously Training for 100 Epochs -- Round 57 ...
+--- train time: 95.27562260627747 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 62.67%
+Test Acc Using Pure NN (single cell): 99.33%
+--- total time from beginning: 92 minutes ---
+
+Continuously Training for 100 Epochs -- Round 58 ...
+--- train time: 95.71569323539734 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 60.00%
+Test Acc Using Pure NN (single cell): 99.28%
+--- total time from beginning: 94 minutes ---
+
+Continuously Training for 100 Epochs -- Round 59 ...
+--- train time: 96.51297903060913 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 96 minutes ---
+
+Continuously Training for 100 Epochs -- Round 60 ...
+--- train time: 96.51229548454285 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.31%
+--- total time from beginning: 97 minutes ---
+
+Continuously Training for 100 Epochs -- Round 61 ...
+--- train time: 96.59427452087402 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.05%
+--- total time from beginning: 99 minutes ---
+
+Continuously Training for 100 Epochs -- Round 62 ...
+--- train time: 97.4201250076294 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 37.33%
+Test Acc Using Pure NN (single cell): 98.73%
+--- total time from beginning: 100 minutes ---
+
+Continuously Training for 100 Epochs -- Round 63 ...
+--- train time: 95.66550874710083 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.18%
+--- total time from beginning: 102 minutes ---
+
+Continuously Training for 100 Epochs -- Round 64 ...
+--- train time: 96.1874008178711 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.13%
+--- total time from beginning: 104 minutes ---
+
+Continuously Training for 100 Epochs -- Round 65 ...
+--- train time: 95.98976182937622 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.21%
+--- total time from beginning: 105 minutes ---
+
+Continuously Training for 100 Epochs -- Round 66 ...
+--- train time: 96.42526841163635 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 62.67%
+Test Acc Using Pure NN (single cell): 99.46%
+--- total time from beginning: 107 minutes ---
+
+Continuously Training for 100 Epochs -- Round 67 ...
+--- train time: 96.44391226768494 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.33%
+--- total time from beginning: 108 minutes ---
+
+Continuously Training for 100 Epochs -- Round 68 ...
+--- train time: 95.39308452606201 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.34%
+--- total time from beginning: 110 minutes ---
+
+Continuously Training for 100 Epochs -- Round 69 ...
+--- train time: 96.23332786560059 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 57.33%
+Test Acc Using Pure NN (single cell): 99.29%
+--- total time from beginning: 112 minutes ---
+
+Continuously Training for 100 Epochs -- Round 70 ...
+--- train time: 95.74577379226685 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 53.33%
+Test Acc Using Pure NN (single cell): 99.24%
+--- total time from beginning: 113 minutes ---
+
+Continuously Training for 100 Epochs -- Round 71 ...
+--- train time: 96.26612091064453 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 61.33%
+Test Acc Using Pure NN (single cell): 99.36%
+--- total time from beginning: 115 minutes ---
+
+Continuously Training for 100 Epochs -- Round 72 ...
+--- train time: 96.39693522453308 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.18%
+--- total time from beginning: 117 minutes ---
+
+Continuously Training for 100 Epochs -- Round 73 ...
+--- train time: 96.49629998207092 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 118 minutes ---
+
+Continuously Training for 100 Epochs -- Round 74 ...
+--- train time: 96.96655535697937 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.24%
+--- total time from beginning: 120 minutes ---
+
+Continuously Training for 100 Epochs -- Round 75 ...
+--- train time: 96.08150696754456 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 54.67%
+Test Acc Using Pure NN (single cell): 99.26%
+--- total time from beginning: 121 minutes ---
+
+Continuously Training for 100 Epochs -- Round 76 ...
+--- train time: 95.5840916633606 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.36%
+--- total time from beginning: 123 minutes ---
+
+Continuously Training for 100 Epochs -- Round 77 ...
+--- train time: 98.19295907020569 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 37.33%
+Test Acc Using Pure NN (single cell): 98.91%
+--- total time from beginning: 125 minutes ---
+
+Continuously Training for 100 Epochs -- Round 78 ...
+--- train time: 96.41612482070923 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 62.67%
+Test Acc Using Pure NN (single cell): 99.41%
+--- total time from beginning: 126 minutes ---
+
+Continuously Training for 100 Epochs -- Round 79 ...
+--- train time: 97.42544412612915 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 62.67%
+Test Acc Using Pure NN (single cell): 99.33%
+--- total time from beginning: 128 minutes ---
+
+Continuously Training for 100 Epochs -- Round 80 ...
+--- train time: 96.88058471679688 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 60.00%
+Test Acc Using Pure NN (single cell): 99.28%
+--- total time from beginning: 130 minutes ---
+
+Continuously Training for 100 Epochs -- Round 81 ...
+--- train time: 96.45320773124695 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 60.00%
+Test Acc Using Pure NN (single cell): 99.37%
+--- total time from beginning: 131 minutes ---
+
+Continuously Training for 100 Epochs -- Round 82 ...
+--- train time: 97.04044079780579 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.37%
+--- total time from beginning: 133 minutes ---
+
+Continuously Training for 100 Epochs -- Round 83 ...
+--- train time: 96.82215523719788 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.29%
+--- total time from beginning: 134 minutes ---
+
+Continuously Training for 100 Epochs -- Round 84 ...
+--- train time: 97.29335713386536 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.26%
+--- total time from beginning: 136 minutes ---
+
+Continuously Training for 100 Epochs -- Round 85 ...
+--- train time: 96.39605808258057 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 61.33%
+Test Acc Using Pure NN (single cell): 99.41%
+--- total time from beginning: 138 minutes ---
+
+Continuously Training for 100 Epochs -- Round 86 ...
+--- train time: 95.8985710144043 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 48.00%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 139 minutes ---
+
+Continuously Training for 100 Epochs -- Round 87 ...
+--- train time: 96.98345017433167 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.36%
+--- total time from beginning: 141 minutes ---
+
+Continuously Training for 100 Epochs -- Round 88 ...
+--- train time: 98.06943941116333 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 54.67%
+Test Acc Using Pure NN (single cell): 99.24%
+--- total time from beginning: 143 minutes ---
+
+Continuously Training for 100 Epochs -- Round 89 ...
+--- train time: 98.19584369659424 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.23%
+--- total time from beginning: 144 minutes ---
+
+Continuously Training for 100 Epochs -- Round 90 ...
+--- train time: 96.67746543884277 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.36%
+--- total time from beginning: 146 minutes ---
+
+Continuously Training for 100 Epochs -- Round 91 ...
+--- train time: 95.52994513511658 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 56.00%
+Test Acc Using Pure NN (single cell): 99.29%
+--- total time from beginning: 147 minutes ---
+
+Continuously Training for 100 Epochs -- Round 92 ...
+--- train time: 97.33067917823792 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 50.67%
+Test Acc Using Pure NN (single cell): 99.26%
+--- total time from beginning: 149 minutes ---
+
+Continuously Training for 100 Epochs -- Round 93 ...
+--- train time: 96.15118360519409 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 60.00%
+Test Acc Using Pure NN (single cell): 99.31%
+--- total time from beginning: 151 minutes ---
+
+Continuously Training for 100 Epochs -- Round 94 ...
+--- train time: 96.88628554344177 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.19%
+--- total time from beginning: 152 minutes ---
+
+Continuously Training for 100 Epochs -- Round 95 ...
+--- train time: 96.88514542579651 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 60.00%
+Test Acc Using Pure NN (single cell): 99.42%
+--- total time from beginning: 154 minutes ---
+
+Continuously Training for 100 Epochs -- Round 96 ...
+--- train time: 96.53152704238892 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 52.00%
+Test Acc Using Pure NN (single cell): 99.13%
+--- total time from beginning: 156 minutes ---
+
+Continuously Training for 100 Epochs -- Round 97 ...
+--- train time: 96.51231145858765 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 34.67%
+Test Acc Using Pure NN (single cell): 98.68%
+--- total time from beginning: 157 minutes ---
+
+Continuously Training for 100 Epochs -- Round 98 ...
+--- train time: 96.95758175849915 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 58.67%
+Test Acc Using Pure NN (single cell): 99.39%
+--- total time from beginning: 159 minutes ---
+
+Continuously Training for 100 Epochs -- Round 99 ...
+--- train time: 96.25770902633667 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 62.67%
+Test Acc Using Pure NN (single cell): 99.39%
+--- total time from beginning: 160 minutes ---
+
+Continuously Training for 100 Epochs -- Round 100 ...
+--- train time: 96.89630198478699 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 49.33%
+Test Acc Using Pure NN (single cell): 99.14%
+--- total time from beginning: 162 minutes ---
+
+Continuously Training for 100 Epochs -- Round 101 ...
+--- train time: 96.35959672927856 seconds ---Train Acc Using Pure NN (whole board): 100.00%
+Train Acc Using Pure NN (single cell): 100.00%
+Test Acc Using Pure NN (whole board): 65.33%
+Test Acc Using Pure NN (single cell): 99.51%
+--- total time from beginning: 164 minutes ---
+
+Continuously Training for 100 Epochs -- Round 102 ...

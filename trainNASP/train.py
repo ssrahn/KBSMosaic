@@ -53,7 +53,7 @@ NeurASPobj = NeurASP(dprogram, nnMapping, optimizers)
 try:
     numOfData = int(sys.argv[1])
 except:
-    numOfData = 25
+    numOfData = 15
 dataList = dataList[:numOfData]
 obsList = obsList[:numOfData]
 
@@ -65,24 +65,33 @@ saveModelPath = 'model_data{}.pt'.format(numOfData)
 
 print('Use {} data to train the NN for 4000 epochs by NN only method (i.e., CrossEntropy loss)'.format(numOfData))
 print(r'The identification accuracy of M_{identify} will also be printed out.\n')
-for i in range(5):
-    if i == 0:
-        print('\nBefore Training ...')
-    else:
-        print('\nContinuously Training for 100 Epochs -- Round {} ...'.format(i))
-        time1 = time.time()
-        # here alpha=1 means rules are not used in training, in other words, it's usual NN training with cross entropy loss
-        NeurASPobj.learn(dataList=dataList, obsList=obsList, alpha=1, epoch=100, lossFunc='cross')
-        time2 = time.time()
-        print("--- train time: %s seconds ---" % (time2 - time1))        
+with open("eval/train"+str(numOfData)+".txt", "w") as f:    
+    for i in range(10000):
+        if i == 0:
+            f.write('\nBefore Training ...\n')
+            print('\nBefore Training ...')
+        else:
+            f.write('\nContinuously Training for 100 Epochs -- Round {} ...\n'.format(i))
+            print('\nContinuously Training for 100 Epochs -- Round {} ...\n'.format(i))
+            time1 = time.time()
+            # here alpha=1 means rules are not used in training, in other words, it's usual NN training with cross entropy loss
+            NeurASPobj.learn(dataList=dataList, obsList=obsList, alpha=1, epoch=100, lossFunc='cross')
+            time2 = time.time()
+            f.write("--- train time: %s seconds ---" % (time2 - time1))
+            print("--- train time: %s seconds ---" % (time2 - time1))        
 
-    acc, singleAcc = NeurASPobj.testNN('identify', train_loader)
-    print('Train Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
-    print('Train Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
-    acc, singleAcc = NeurASPobj.testNN('identify', test_loader)
-    print('Test Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
-    print('Test Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
-    print('--- total time from beginning: %s minutes ---' % int((time.time() - startTime)/60) )
+        acc, singleAcc = NeurASPobj.testNN('identify', train_loader)
+        f.write('Train Acc Using Pure NN (whole board): {:0.2f}%\n'.format(acc))
+        print('Train Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
+        f.write('Train Acc Using Pure NN (single cell): {:0.2f}%\n'.format(singleAcc))
+        print('Train Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
+        acc, singleAcc = NeurASPobj.testNN('identify', test_loader)
+        f.write('Test Acc Using Pure NN (whole board): {:0.2f}%\n'.format(acc))
+        print('Test Acc Using Pure NN (whole board): {:0.2f}%'.format(acc))
+        f.write('Test Acc Using Pure NN (single cell): {:0.2f}%\n'.format(singleAcc))
+        print('Test Acc Using Pure NN (single cell): {:0.2f}%'.format(singleAcc))
+        f.write('--- total time from beginning: %s minutes ---\n' % int((time.time() - startTime)/60))
+        print('--- total time from beginning: %s minutes ---' % int((time.time() - startTime)/60))
 
 # save the trained model
 print('Storing the trained model into {}'.format(saveModelPath))

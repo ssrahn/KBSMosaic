@@ -1,9 +1,12 @@
 import sys
+import time
 import copy
 import numpy as np
 from tensorflow import keras
 from model import get_model
 from dataGen import get_data
+
+startTime = time.time()
 
 def norm(a):
     return (a/10)-.5
@@ -47,7 +50,11 @@ if __name__=="__main__":
         adam = keras.optimizers.Adam(lr=.001)
         model.compile(loss='sparse_categorical_crossentropy', optimizer=adam)
 
-        history = model.fit(x_train, y_train, batch_size=32, epochs=10)
+        time1 = time.time()
+        history = model.fit(x_train, y_train, batch_size=16, epochs=6)
+        time2 = time.time()
+        print("--- train time: %s minutes ---" % int((time2 - time1)/60)) 
+
         print("history:")
         print(history.history)
         model.save('model.h5')
