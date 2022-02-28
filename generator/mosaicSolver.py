@@ -127,6 +127,7 @@ class Solver:
 
 
     def restrict_at(self,x,y):
+        # Deprecated
         if self.is_out_of_bounds(x,y):
             return  False
         else:
@@ -135,6 +136,7 @@ class Solver:
                 self.constructed_solution[x][y] -= 1
 
     def free_at(self,x,y):
+        # Deprecated
         if self.is_out_of_bounds(x,y):
             return False
         else:
@@ -143,6 +145,7 @@ class Solver:
                 self.constructed_solution[x][y] += 1
 
     def set_white(self, x, y):
+        # Deprecated
         # Done when we want to reverse a Black box operation
 
         already_blank = self.get_solution_at(x,y) == 0
@@ -175,6 +178,7 @@ class Solver:
 
 
     def set_black(self, x, y):
+        # Deprecated
         # Check for Legality first:
         # We can not set a block to black twice
         already_black = self.get_solution_at(x,y)
@@ -217,6 +221,7 @@ class Solver:
 
 
     def get_smallest_unsatisfied_number(self):
+        # Deprecated
         # Coordinates of smallest unsatisfied number
         x = -1
         y = -1
@@ -252,6 +257,8 @@ class Solver:
 
 
     def solve_step(self, x,y, depth):
+        # Deprecated
+
 
         # Occupy Block at x,y
         valid = self.set_black(x,y)
@@ -443,49 +450,8 @@ class Solver:
             change = change or self.solve_fill()
             iterate = change
 
-        return True
+        return self.valid_solution()
 
-    def throwaway_recursion(self):
-        change = False
-        while change:
-            if not change and not self.valid_solution():
-                # Get new Unsatisfied Clue
-                clue = self.get_smallest_unsatisfied_number()
-
-                copys = copy.deepcopy(self.constructed_solution)
-
-                # Recursively add new black blocks
-                for i in range(0, 9):
-                    pos = number_to_9x9(i)
-                    _x = clue[0] + pos[0]
-                    _y = clue[1] + pos[1]
-
-                    made_change = False
-                    # Occupy Block at x,y
-                    if self.get_solution_at(_x, _y) == 0:
-                        self.constructed_solution[_x][_y] = 1
-
-                        # Restrict ALL nearby solution fields
-                        for i in range(0, 9):
-                            res_pos = number_to_9x9(i)
-                            res_x = _x + res_pos[0]
-                            res_y = _y + res_pos[1]
-
-                            value = self.get_solution_at(res_x, res_y)
-                            if value != 1 and value != -10:
-                                made_change = True
-                                self.constructed_solution[res_x][res_y] = -1
-
-                        value = self.iterate_solution()
-
-                        if value == True:
-                            # A second solution has been found!
-                            return True
-
-                    self.constructed_solution = copys
-
-            elif not change and self.valid_solution():
-                break;
 
     def get_solutions(self, board):
 
@@ -503,7 +469,8 @@ class Solver:
 
         #    child_solutions += self.solve_step(_x,_y, 0)
 
-        self.iterate_solution()
+        # Iterate game instance until solution is found
+        solution_found = self.iterate_solution()
 
         # Validate
         #print(self.valid_solution())
