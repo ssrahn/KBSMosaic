@@ -51,7 +51,7 @@ if __name__=="__main__":
         model.compile(loss='sparse_categorical_crossentropy', optimizer=adam)
 
         time1 = time.time()
-        history = model.fit(x_train, y_train, batch_size=16, epochs=6)
+        history = model.fit(x_train, y_train, batch_size=16, epochs=4)
         time2 = time.time()
         print("--- train time: %s minutes ---" % int((time2 - time1)/60)) 
 
@@ -65,5 +65,5 @@ if __name__=="__main__":
     print("Loss:", model.evaluate(x_test, y_test))
     keras.utils.plot_model(model, "multi_input_and_output_model.png", show_shapes=True)
     acc_whole, acc_cell = test_accuracy(x_test[:100], y_test[:100])
-    print("Acc whole board:", round(acc_whole,2))
-    print("Acc single cell:", round(acc_cell,2))
+    print("Acc whole board:", round(acc_whole,4))
+    print("Acc single cell:", round(acc_cell,4))

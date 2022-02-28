@@ -120,6 +120,7 @@ def draw_window(surface, board):
 def genCSV(fname, num_inst):
     size = 9
     quantity = 1
+    solver = mosaicSolver.Solver(size)
 
     with open(fname, 'w') as f:
         f.truncate(0)
@@ -130,7 +131,6 @@ def genCSV(fname, num_inst):
             print('Instance: {}'.format(i), end='\r')
             quantity = ((quantity+1)%15)+1
 
-            solver = mosaicSolver.Solver(size)
             board = solver.create_board(quantity, 6+ i)
             board_s = ','.join(str(i) for i in np.array(board).reshape(81))
             sol = solver.get_solutions(board)
